@@ -22,7 +22,7 @@ Partial Class FormMain
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxProcessing = New System.Windows.Forms.PictureBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -34,20 +34,23 @@ Partial Class FormMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ListBoxFileName = New System.Windows.Forms.ListBox()
+        Me.ButtonOpenFolder = New System.Windows.Forms.Button()
+        Me.ButtonOpenFile = New System.Windows.Forms.Button()
+        Me.ButtonRemoveListPic = New System.Windows.Forms.Button()
+        Me.OpenFileDialogForList = New System.Windows.Forms.OpenFileDialog()
+        Me.FolderBrowserDialogForList = New System.Windows.Forms.FolderBrowserDialog()
+        CType(Me.PictureBoxProcessing, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'PictureBox1
+        'PictureBoxProcessing
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(342, 32)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(285, 245)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
+        Me.PictureBoxProcessing.Location = New System.Drawing.Point(342, 32)
+        Me.PictureBoxProcessing.Name = "PictureBoxProcessing"
+        Me.PictureBoxProcessing.Size = New System.Drawing.Size(285, 245)
+        Me.PictureBoxProcessing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxProcessing.TabIndex = 0
+        Me.PictureBoxProcessing.TabStop = False
         '
         'TextBox1
         '
@@ -136,51 +139,51 @@ Partial Class FormMain
         Me.CheckBox2.Text = "Enable"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'ListBoxFileName
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 12
-        Me.ListBox1.Location = New System.Drawing.Point(12, 12)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(305, 376)
-        Me.ListBox1.TabIndex = 12
+        Me.ListBoxFileName.FormattingEnabled = True
+        Me.ListBoxFileName.ItemHeight = 12
+        Me.ListBoxFileName.Location = New System.Drawing.Point(12, 12)
+        Me.ListBoxFileName.Name = "ListBoxFileName"
+        Me.ListBoxFileName.Size = New System.Drawing.Size(305, 376)
+        Me.ListBoxFileName.TabIndex = 12
         '
-        'Button2
+        'ButtonOpenFolder
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 399)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(97, 29)
-        Me.Button2.TabIndex = 13
-        Me.Button2.Text = "Open folder"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.ButtonOpenFolder.Location = New System.Drawing.Point(12, 399)
+        Me.ButtonOpenFolder.Name = "ButtonOpenFolder"
+        Me.ButtonOpenFolder.Size = New System.Drawing.Size(97, 29)
+        Me.ButtonOpenFolder.TabIndex = 13
+        Me.ButtonOpenFolder.Text = "Open folder"
+        Me.ButtonOpenFolder.UseVisualStyleBackColor = True
         '
-        'Button3
+        'ButtonOpenFile
         '
-        Me.Button3.Location = New System.Drawing.Point(116, 399)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(97, 29)
-        Me.Button3.TabIndex = 13
-        Me.Button3.Text = "{}"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.ButtonOpenFile.Location = New System.Drawing.Point(116, 399)
+        Me.ButtonOpenFile.Name = "ButtonOpenFile"
+        Me.ButtonOpenFile.Size = New System.Drawing.Size(97, 29)
+        Me.ButtonOpenFile.TabIndex = 13
+        Me.ButtonOpenFile.Text = "Open file"
+        Me.ButtonOpenFile.UseVisualStyleBackColor = True
         '
-        'Button4
+        'ButtonRemoveListPic
         '
-        Me.Button4.Location = New System.Drawing.Point(220, 399)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(97, 29)
-        Me.Button4.TabIndex = 13
-        Me.Button4.Text = "Remove all"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.ButtonRemoveListPic.Location = New System.Drawing.Point(220, 399)
+        Me.ButtonRemoveListPic.Name = "ButtonRemoveListPic"
+        Me.ButtonRemoveListPic.Size = New System.Drawing.Size(97, 29)
+        Me.ButtonRemoveListPic.TabIndex = 13
+        Me.ButtonRemoveListPic.Text = "Remove all"
+        Me.ButtonRemoveListPic.UseVisualStyleBackColor = True
         '
-        'Form1
+        'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(642, 440)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.ButtonRemoveListPic)
+        Me.Controls.Add(Me.ButtonOpenFile)
+        Me.Controls.Add(Me.ButtonOpenFolder)
+        Me.Controls.Add(Me.ListBoxFileName)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Label4)
@@ -192,16 +195,16 @@ Partial Class FormMain
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Name = "Form1"
+        Me.Controls.Add(Me.PictureBoxProcessing)
+        Me.Name = "FormMain"
         Me.Text = "Manual-Picture-Classifying-Assistanter"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxProcessing, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBoxProcessing As PictureBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
@@ -213,8 +216,10 @@ Partial Class FormMain
     Friend WithEvents Label4 As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents ListBoxFileName As ListBox
+    Friend WithEvents ButtonOpenFolder As Button
+    Friend WithEvents ButtonOpenFile As Button
+    Friend WithEvents ButtonRemoveListPic As Button
+    Friend WithEvents OpenFileDialogForList As OpenFileDialog
+    Friend WithEvents FolderBrowserDialogForList As FolderBrowserDialog
 End Class
