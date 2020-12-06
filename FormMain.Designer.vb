@@ -23,121 +23,125 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PictureBoxProcessing = New System.Windows.Forms.PictureBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.TextBoxNewFileName = New System.Windows.Forms.TextBox()
+        Me.TextBoxNewPath = New System.Windows.Forms.TextBox()
+        Me.TextBoxFileNamePrefix = New System.Windows.Forms.TextBox()
+        Me.TextBoxFileNameSuffix = New System.Windows.Forms.TextBox()
+        Me.ButtonNext = New System.Windows.Forms.Button()
+        Me.LabelNewFileName = New System.Windows.Forms.Label()
+        Me.LabelNewPath = New System.Windows.Forms.Label()
+        Me.LabelFileNamePrefix = New System.Windows.Forms.Label()
+        Me.LabelFileNameSuffix = New System.Windows.Forms.Label()
+        Me.CheckBoxFileNamePrefix = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxFileNameSuffix = New System.Windows.Forms.CheckBox()
         Me.ListBoxFileName = New System.Windows.Forms.ListBox()
         Me.ButtonOpenFolder = New System.Windows.Forms.Button()
         Me.ButtonOpenFile = New System.Windows.Forms.Button()
         Me.ButtonRemoveListPic = New System.Windows.Forms.Button()
         Me.OpenFileDialogForList = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialogForList = New System.Windows.Forms.FolderBrowserDialog()
+        Me.ButtonApplyAll = New System.Windows.Forms.Button()
+        Me.LabelOldFileName = New System.Windows.Forms.Label()
+        Me.ButtonSelectNewPath = New System.Windows.Forms.Button()
         CType(Me.PictureBoxProcessing, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBoxProcessing
         '
-        Me.PictureBoxProcessing.Location = New System.Drawing.Point(342, 32)
+        Me.PictureBoxProcessing.Location = New System.Drawing.Point(336, 12)
         Me.PictureBoxProcessing.Name = "PictureBoxProcessing"
         Me.PictureBoxProcessing.Size = New System.Drawing.Size(285, 245)
         Me.PictureBoxProcessing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBoxProcessing.TabIndex = 0
         Me.PictureBoxProcessing.TabStop = False
         '
-        'TextBox1
+        'TextBoxNewFileName
         '
-        Me.TextBox1.Location = New System.Drawing.Point(424, 313)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(97, 21)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBoxNewFileName.Location = New System.Drawing.Point(418, 293)
+        Me.TextBoxNewFileName.Name = "TextBoxNewFileName"
+        Me.TextBoxNewFileName.Size = New System.Drawing.Size(97, 21)
+        Me.TextBoxNewFileName.TabIndex = 1
         '
-        'TextBox2
+        'TextBoxNewPath
         '
-        Me.TextBox2.Location = New System.Drawing.Point(395, 340)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(232, 21)
-        Me.TextBox2.TabIndex = 2
+        Me.TextBoxNewPath.Location = New System.Drawing.Point(389, 320)
+        Me.TextBoxNewPath.Name = "TextBoxNewPath"
+        Me.TextBoxNewPath.Size = New System.Drawing.Size(202, 21)
+        Me.TextBoxNewPath.TabIndex = 2
         '
-        'TextBox3
+        'TextBoxFileNamePrefix
         '
-        Me.TextBox3.Location = New System.Drawing.Point(446, 367)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(105, 21)
-        Me.TextBox3.TabIndex = 3
+        Me.TextBoxFileNamePrefix.Location = New System.Drawing.Point(440, 347)
+        Me.TextBoxFileNamePrefix.Name = "TextBoxFileNamePrefix"
+        Me.TextBoxFileNamePrefix.Size = New System.Drawing.Size(105, 21)
+        Me.TextBoxFileNamePrefix.TabIndex = 3
         '
-        'TextBox4
+        'TextBoxFileNameSuffix
         '
-        Me.TextBox4.Location = New System.Drawing.Point(446, 394)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(105, 21)
-        Me.TextBox4.TabIndex = 4
+        Me.TextBoxFileNameSuffix.Location = New System.Drawing.Point(440, 374)
+        Me.TextBoxFileNameSuffix.Name = "TextBoxFileNameSuffix"
+        Me.TextBoxFileNameSuffix.Size = New System.Drawing.Size(105, 21)
+        Me.TextBoxFileNameSuffix.TabIndex = 4
         '
-        'Button1
+        'ButtonNext
         '
-        Me.Button1.Location = New System.Drawing.Point(527, 311)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 23)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Next"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonNext.Enabled = False
+        Me.ButtonNext.Location = New System.Drawing.Point(521, 291)
+        Me.ButtonNext.Name = "ButtonNext"
+        Me.ButtonNext.Size = New System.Drawing.Size(100, 23)
+        Me.ButtonNext.TabIndex = 5
+        Me.ButtonNext.Text = "Next"
+        Me.ButtonNext.UseVisualStyleBackColor = True
         '
-        'Label1
+        'LabelNewFileName
         '
-        Me.Label1.Location = New System.Drawing.Point(340, 313)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 21)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "New FileName"
+        Me.LabelNewFileName.Location = New System.Drawing.Point(334, 293)
+        Me.LabelNewFileName.Name = "LabelNewFileName"
+        Me.LabelNewFileName.Size = New System.Drawing.Size(78, 21)
+        Me.LabelNewFileName.TabIndex = 6
+        Me.LabelNewFileName.Text = "New FileName"
         '
-        'Label2
+        'LabelNewPath
         '
-        Me.Label2.Location = New System.Drawing.Point(340, 340)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(49, 21)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "NewPath"
+        Me.LabelNewPath.Location = New System.Drawing.Point(334, 320)
+        Me.LabelNewPath.Name = "LabelNewPath"
+        Me.LabelNewPath.Size = New System.Drawing.Size(49, 21)
+        Me.LabelNewPath.TabIndex = 7
+        Me.LabelNewPath.Text = "NewPath"
         '
-        'Label3
+        'LabelFileNamePrefix
         '
-        Me.Label3.Location = New System.Drawing.Point(340, 367)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 21)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "FileName Prefix"
+        Me.LabelFileNamePrefix.Location = New System.Drawing.Point(334, 347)
+        Me.LabelFileNamePrefix.Name = "LabelFileNamePrefix"
+        Me.LabelFileNamePrefix.Size = New System.Drawing.Size(100, 21)
+        Me.LabelFileNamePrefix.TabIndex = 8
+        Me.LabelFileNamePrefix.Text = "FileName Prefix"
         '
-        'Label4
+        'LabelFileNameSuffix
         '
-        Me.Label4.Location = New System.Drawing.Point(340, 394)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(100, 21)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "FileName Suffix"
+        Me.LabelFileNameSuffix.Location = New System.Drawing.Point(334, 374)
+        Me.LabelFileNameSuffix.Name = "LabelFileNameSuffix"
+        Me.LabelFileNameSuffix.Size = New System.Drawing.Size(100, 21)
+        Me.LabelFileNameSuffix.TabIndex = 9
+        Me.LabelFileNameSuffix.Text = "FileName Suffix"
         '
-        'CheckBox1
+        'CheckBoxFileNamePrefix
         '
-        Me.CheckBox1.Location = New System.Drawing.Point(557, 367)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(70, 21)
-        Me.CheckBox1.TabIndex = 10
-        Me.CheckBox1.Text = "Enable"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CheckBoxFileNamePrefix.Location = New System.Drawing.Point(551, 347)
+        Me.CheckBoxFileNamePrefix.Name = "CheckBoxFileNamePrefix"
+        Me.CheckBoxFileNamePrefix.Size = New System.Drawing.Size(70, 21)
+        Me.CheckBoxFileNamePrefix.TabIndex = 10
+        Me.CheckBoxFileNamePrefix.Text = "Enable"
+        Me.CheckBoxFileNamePrefix.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'CheckBoxFileNameSuffix
         '
-        Me.CheckBox2.Location = New System.Drawing.Point(557, 394)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(70, 21)
-        Me.CheckBox2.TabIndex = 11
-        Me.CheckBox2.Text = "Enable"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBoxFileNameSuffix.Location = New System.Drawing.Point(551, 374)
+        Me.CheckBoxFileNameSuffix.Name = "CheckBoxFileNameSuffix"
+        Me.CheckBoxFileNameSuffix.Size = New System.Drawing.Size(70, 21)
+        Me.CheckBoxFileNameSuffix.TabIndex = 11
+        Me.CheckBoxFileNameSuffix.Text = "Enable"
+        Me.CheckBoxFileNameSuffix.UseVisualStyleBackColor = True
         '
         'ListBoxFileName
         '
@@ -175,29 +179,59 @@ Partial Class FormMain
         Me.ButtonRemoveListPic.Text = "Remove all"
         Me.ButtonRemoveListPic.UseVisualStyleBackColor = True
         '
+        'ButtonApplyAll
+        '
+        Me.ButtonApplyAll.Location = New System.Drawing.Point(336, 399)
+        Me.ButtonApplyAll.Name = "ButtonApplyAll"
+        Me.ButtonApplyAll.Size = New System.Drawing.Size(285, 29)
+        Me.ButtonApplyAll.TabIndex = 14
+        Me.ButtonApplyAll.Text = "ApplyAll"
+        Me.ButtonApplyAll.UseVisualStyleBackColor = True
+        '
+        'LabelOldFileName
+        '
+        Me.LabelOldFileName.Location = New System.Drawing.Point(334, 260)
+        Me.LabelOldFileName.Name = "LabelOldFileName"
+        Me.LabelOldFileName.Size = New System.Drawing.Size(287, 28)
+        Me.LabelOldFileName.TabIndex = 15
+        '
+        'ButtonSelectNewPath
+        '
+        Me.ButtonSelectNewPath.Font = New System.Drawing.Font("宋体", 5.0!)
+        Me.ButtonSelectNewPath.Location = New System.Drawing.Point(597, 320)
+        Me.ButtonSelectNewPath.Name = "ButtonSelectNewPath"
+        Me.ButtonSelectNewPath.Size = New System.Drawing.Size(24, 21)
+        Me.ButtonSelectNewPath.TabIndex = 16
+        Me.ButtonSelectNewPath.Text = "..."
+        Me.ButtonSelectNewPath.UseVisualStyleBackColor = True
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(642, 440)
+        Me.Controls.Add(Me.ButtonSelectNewPath)
+        Me.Controls.Add(Me.LabelOldFileName)
+        Me.Controls.Add(Me.ButtonApplyAll)
         Me.Controls.Add(Me.ButtonRemoveListPic)
         Me.Controls.Add(Me.ButtonOpenFile)
         Me.Controls.Add(Me.ButtonOpenFolder)
         Me.Controls.Add(Me.ListBoxFileName)
-        Me.Controls.Add(Me.CheckBox2)
-        Me.Controls.Add(Me.CheckBox1)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.CheckBoxFileNameSuffix)
+        Me.Controls.Add(Me.CheckBoxFileNamePrefix)
+        Me.Controls.Add(Me.LabelFileNameSuffix)
+        Me.Controls.Add(Me.LabelFileNamePrefix)
+        Me.Controls.Add(Me.LabelNewPath)
+        Me.Controls.Add(Me.LabelNewFileName)
+        Me.Controls.Add(Me.ButtonNext)
+        Me.Controls.Add(Me.TextBoxFileNameSuffix)
+        Me.Controls.Add(Me.TextBoxFileNamePrefix)
+        Me.Controls.Add(Me.TextBoxNewPath)
+        Me.Controls.Add(Me.TextBoxNewFileName)
         Me.Controls.Add(Me.PictureBoxProcessing)
+        Me.KeyPreview = True
         Me.Name = "FormMain"
-        Me.Text = "Manual-Picture-Classifying-Assistanter"
+        Me.Text = "Manual-Picture-Classifying-Assistant"
         CType(Me.PictureBoxProcessing, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -205,21 +239,24 @@ Partial Class FormMain
     End Sub
 
     Friend WithEvents PictureBoxProcessing As PictureBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents TextBoxNewFileName As TextBox
+    Friend WithEvents TextBoxNewPath As TextBox
+    Friend WithEvents TextBoxFileNamePrefix As TextBox
+    Friend WithEvents TextBoxFileNameSuffix As TextBox
+    Friend WithEvents ButtonNext As Button
+    Friend WithEvents LabelNewFileName As Label
+    Friend WithEvents LabelNewPath As Label
+    Friend WithEvents LabelFileNamePrefix As Label
+    Friend WithEvents LabelFileNameSuffix As Label
+    Friend WithEvents CheckBoxFileNamePrefix As CheckBox
+    Friend WithEvents CheckBoxFileNameSuffix As CheckBox
     Friend WithEvents ListBoxFileName As ListBox
     Friend WithEvents ButtonOpenFolder As Button
     Friend WithEvents ButtonOpenFile As Button
     Friend WithEvents ButtonRemoveListPic As Button
     Friend WithEvents OpenFileDialogForList As OpenFileDialog
     Friend WithEvents FolderBrowserDialogForList As FolderBrowserDialog
+    Friend WithEvents ButtonApplyAll As Button
+    Friend WithEvents LabelOldFileName As Label
+    Friend WithEvents ButtonSelectNewPath As Button
 End Class
