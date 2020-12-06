@@ -133,6 +133,9 @@ Public Class FormMain
         For i = 1 To UBound(FileMovement, 2)
             File.Copy(FileMovement(0, i), FileMovement(1, i), False)
         Next
+        For i = 1 To UBound(FileMovement, 2)
+            File.Delete(FileMovement(0, i))
+        Next
     End Sub
 
     Private Sub ButtonSelectNewPath_Click(sender As Object, e As EventArgs) Handles ButtonSelectNewPath.Click
