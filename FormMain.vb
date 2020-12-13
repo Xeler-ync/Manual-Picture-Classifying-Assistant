@@ -130,10 +130,22 @@ Public Class FormMain
     End Sub
 
     Private Sub ButtonApplyAll_Click(sender As Object, e As EventArgs) Handles ButtonApplyAll.Click
-        For i = 1 To UBound(FileMovement, 2)
-            File.Copy(FileMovement(0, i), FileMovement(1, i), False)
+        For i = 1 To UBound(FileMovement, 2) '先复制文件
+            Dim SuffixIndex As Byte = 0
+            Dim SuffixIndexStr As String = ""
+            Do '检查重复文件名，如果有则加上序号
+                Try '组合文件路径
+                    File.Copy(FileMovement(0, i), System.IO.Path.GetFileNameWithoutExtension(FileMovement(1, i)) & SuffixIndexStr & System.IO.Path.GetExtension(FileMovement(1, i)), False)
+                    SuffixIndex = 0 '如果正常则会进行到这，并清空缓存
+                    SuffixIndexStr = ""
+                    Exit Do '进行下一个文件
+                Catch a As System.IO.IOException 'Catch重复的错误
+                    SuffixIndex += 1 '如果添加序号依旧有重复则+1
+                    SuffixIndexStr = " (" & SuffixIndex & ")"
+                End Try
+            Loop
         Next
-        For i = 1 To UBound(FileMovement, 2)
+        For i = 1 To UBound(FileMovement, 2) '复制完后删除原文件
             File.Delete(FileMovement(0, i))
         Next
     End Sub
