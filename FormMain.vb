@@ -87,24 +87,29 @@ Public Class FormMain
             End If
             Dim NewListUBound As UInt16 = UBound(FileMovement, 2) + 1 '计算新上标
             ReDim Preserve FileMovement(0 To 1, 0 To NewListUBound) '扩展数组
-            Dim NewPath As String '新路径
-            FileMovement(0, NewListUBound) = ListBoxFileName.SelectedItem '存储原路径
+            Dim OriginalPath As String = "" '原路径
+            Dim NewPath As String = "" '新路径
+            If CopyButNotDeleteToolStripMenuItem.Checked = True Then '如果不删除原文件在头则加上标识
+                OriginalPath += "%DTDel%“
+            End If
+            OriginalPath += ListBoxFileName.SelectedItem
+            FileMovement(0, NewListUBound) = OriginalPath '存储原路径
             NewPath = TextBoxNewPath.Text '文件夹
             If CheckBoxFileNamePrefix.Checked = True Then '前缀
                 NewPath += TextBoxFileNamePrefix.Text
             End If
             If TextBoxNewFileName.Text <> "" Then
-                NewPath += TextBoxNewFileName.Text '文件名
-            Else
-                NewPath += System.IO.Path.GetFileNameWithoutExtension(ListBoxFileName.SelectedItem)
+                    NewPath += TextBoxNewFileName.Text '文件名
+                Else
+                    NewPath += System.IO.Path.GetFileNameWithoutExtension(ListBoxFileName.SelectedItem)
+                End If
+                If CheckBoxFileNameSuffix.Checked = True Then '后缀
+                    NewPath += TextBoxFileNameSuffix.Text
+                End If
+                NewPath += System.IO.Path.GetExtension(ListBoxFileName.SelectedItem)
+                FileMovement(1, NewListUBound) = NewPath '存储新路径
             End If
-            If CheckBoxFileNameSuffix.Checked = True Then '后缀
-                NewPath += TextBoxFileNameSuffix.Text
-            End If
-            NewPath += System.IO.Path.GetExtension(ListBoxFileName.SelectedItem)
-            FileMovement(1, NewListUBound) = NewPath '存储新路径
-        End If
-        Dim PicListSelectedIndex As UInt16
+            Dim PicListSelectedIndex As UInt16
         PicListSelectedIndex = ListBoxFileName.SelectedIndex
         Try
             ListBoxFileName.SelectedIndex = PicListSelectedIndex + 1
@@ -139,6 +144,12 @@ Public Class FormMain
             Dim SuffixIndexStr As String = ""
             Do '检查重复文件名，如果有则加上序号
                 Try '组合文件路径
+                    Dim Path As String
+                    If FileMovement(0, i).Contains("%DTDel%") Then '如果存在标识则去除后再赋值
+                        Path = FileMovement(0, i).Replace("%DTDel%", "")
+                    Else
+                        Path = FileMovement(0, i)
+                    End If
                     File.Copy(FileMovement(0, i), System.IO.Path.GetFileNameWithoutExtension(FileMovement(1, i)) & SuffixIndexStr & System.IO.Path.GetExtension(FileMovement(1, i)), False)
                     SuffixIndex = 0 '如果正常则会进行到这，并清空缓存
                     SuffixIndexStr = ""
@@ -150,7 +161,9 @@ Public Class FormMain
             Loop
         Next
         For i = 1 To UBound(FileMovement, 2) '复制完后删除原文件
-            File.Delete(FileMovement(0, i))
+            If Not FileMovement(0, i).Contains("%DTDel%") Then '如果存在标识则跳过
+                File.Delete(FileMovement(0, i))
+            End If
         Next
     End Sub
 
