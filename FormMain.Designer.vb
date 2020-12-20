@@ -43,12 +43,20 @@ Partial Class FormMain
         Me.ButtonApplyAll = New System.Windows.Forms.Button()
         Me.LabelOldFileName = New System.Windows.Forms.Label()
         Me.ButtonSelectNewPath = New System.Windows.Forms.Button()
+        Me.MenuStripSettings = New System.Windows.Forms.MenuStrip()
+        Me.PreferencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SpecificStringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DelToDeleteFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PassToSkipToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RemoveFromListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyButNotDeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PictureBoxProcessing, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStripSettings.SuspendLayout()
         Me.SuspendLayout()
         '
         'PictureBoxProcessing
         '
-        Me.PictureBoxProcessing.Location = New System.Drawing.Point(336, 12)
+        Me.PictureBoxProcessing.Location = New System.Drawing.Point(336, 29)
         Me.PictureBoxProcessing.Name = "PictureBoxProcessing"
         Me.PictureBoxProcessing.Size = New System.Drawing.Size(285, 245)
         Me.PictureBoxProcessing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -57,28 +65,28 @@ Partial Class FormMain
         '
         'TextBoxNewFileName
         '
-        Me.TextBoxNewFileName.Location = New System.Drawing.Point(418, 293)
+        Me.TextBoxNewFileName.Location = New System.Drawing.Point(418, 310)
         Me.TextBoxNewFileName.Name = "TextBoxNewFileName"
         Me.TextBoxNewFileName.Size = New System.Drawing.Size(97, 21)
         Me.TextBoxNewFileName.TabIndex = 1
         '
         'TextBoxNewPath
         '
-        Me.TextBoxNewPath.Location = New System.Drawing.Point(389, 320)
+        Me.TextBoxNewPath.Location = New System.Drawing.Point(389, 337)
         Me.TextBoxNewPath.Name = "TextBoxNewPath"
         Me.TextBoxNewPath.Size = New System.Drawing.Size(202, 21)
         Me.TextBoxNewPath.TabIndex = 2
         '
         'TextBoxFileNamePrefix
         '
-        Me.TextBoxFileNamePrefix.Location = New System.Drawing.Point(440, 347)
+        Me.TextBoxFileNamePrefix.Location = New System.Drawing.Point(440, 364)
         Me.TextBoxFileNamePrefix.Name = "TextBoxFileNamePrefix"
         Me.TextBoxFileNamePrefix.Size = New System.Drawing.Size(105, 21)
         Me.TextBoxFileNamePrefix.TabIndex = 3
         '
         'TextBoxFileNameSuffix
         '
-        Me.TextBoxFileNameSuffix.Location = New System.Drawing.Point(440, 374)
+        Me.TextBoxFileNameSuffix.Location = New System.Drawing.Point(440, 391)
         Me.TextBoxFileNameSuffix.Name = "TextBoxFileNameSuffix"
         Me.TextBoxFileNameSuffix.Size = New System.Drawing.Size(105, 21)
         Me.TextBoxFileNameSuffix.TabIndex = 4
@@ -86,7 +94,7 @@ Partial Class FormMain
         'ButtonNext
         '
         Me.ButtonNext.Enabled = False
-        Me.ButtonNext.Location = New System.Drawing.Point(521, 291)
+        Me.ButtonNext.Location = New System.Drawing.Point(521, 308)
         Me.ButtonNext.Name = "ButtonNext"
         Me.ButtonNext.Size = New System.Drawing.Size(100, 23)
         Me.ButtonNext.TabIndex = 5
@@ -95,7 +103,7 @@ Partial Class FormMain
         '
         'LabelNewFileName
         '
-        Me.LabelNewFileName.Location = New System.Drawing.Point(334, 293)
+        Me.LabelNewFileName.Location = New System.Drawing.Point(334, 310)
         Me.LabelNewFileName.Name = "LabelNewFileName"
         Me.LabelNewFileName.Size = New System.Drawing.Size(78, 21)
         Me.LabelNewFileName.TabIndex = 6
@@ -103,7 +111,7 @@ Partial Class FormMain
         '
         'LabelNewPath
         '
-        Me.LabelNewPath.Location = New System.Drawing.Point(334, 320)
+        Me.LabelNewPath.Location = New System.Drawing.Point(334, 337)
         Me.LabelNewPath.Name = "LabelNewPath"
         Me.LabelNewPath.Size = New System.Drawing.Size(49, 21)
         Me.LabelNewPath.TabIndex = 7
@@ -111,7 +119,7 @@ Partial Class FormMain
         '
         'LabelFileNamePrefix
         '
-        Me.LabelFileNamePrefix.Location = New System.Drawing.Point(334, 347)
+        Me.LabelFileNamePrefix.Location = New System.Drawing.Point(334, 364)
         Me.LabelFileNamePrefix.Name = "LabelFileNamePrefix"
         Me.LabelFileNamePrefix.Size = New System.Drawing.Size(100, 21)
         Me.LabelFileNamePrefix.TabIndex = 8
@@ -119,7 +127,7 @@ Partial Class FormMain
         '
         'LabelFileNameSuffix
         '
-        Me.LabelFileNameSuffix.Location = New System.Drawing.Point(334, 374)
+        Me.LabelFileNameSuffix.Location = New System.Drawing.Point(334, 391)
         Me.LabelFileNameSuffix.Name = "LabelFileNameSuffix"
         Me.LabelFileNameSuffix.Size = New System.Drawing.Size(100, 21)
         Me.LabelFileNameSuffix.TabIndex = 9
@@ -127,7 +135,7 @@ Partial Class FormMain
         '
         'CheckBoxFileNamePrefix
         '
-        Me.CheckBoxFileNamePrefix.Location = New System.Drawing.Point(551, 347)
+        Me.CheckBoxFileNamePrefix.Location = New System.Drawing.Point(551, 364)
         Me.CheckBoxFileNamePrefix.Name = "CheckBoxFileNamePrefix"
         Me.CheckBoxFileNamePrefix.Size = New System.Drawing.Size(70, 21)
         Me.CheckBoxFileNamePrefix.TabIndex = 10
@@ -136,7 +144,7 @@ Partial Class FormMain
         '
         'CheckBoxFileNameSuffix
         '
-        Me.CheckBoxFileNameSuffix.Location = New System.Drawing.Point(551, 374)
+        Me.CheckBoxFileNameSuffix.Location = New System.Drawing.Point(551, 391)
         Me.CheckBoxFileNameSuffix.Name = "CheckBoxFileNameSuffix"
         Me.CheckBoxFileNameSuffix.Size = New System.Drawing.Size(70, 21)
         Me.CheckBoxFileNameSuffix.TabIndex = 11
@@ -147,14 +155,14 @@ Partial Class FormMain
         '
         Me.ListBoxFileName.FormattingEnabled = True
         Me.ListBoxFileName.ItemHeight = 12
-        Me.ListBoxFileName.Location = New System.Drawing.Point(12, 12)
+        Me.ListBoxFileName.Location = New System.Drawing.Point(12, 29)
         Me.ListBoxFileName.Name = "ListBoxFileName"
         Me.ListBoxFileName.Size = New System.Drawing.Size(305, 376)
         Me.ListBoxFileName.TabIndex = 12
         '
         'ButtonOpenFolder
         '
-        Me.ButtonOpenFolder.Location = New System.Drawing.Point(12, 399)
+        Me.ButtonOpenFolder.Location = New System.Drawing.Point(12, 416)
         Me.ButtonOpenFolder.Name = "ButtonOpenFolder"
         Me.ButtonOpenFolder.Size = New System.Drawing.Size(97, 29)
         Me.ButtonOpenFolder.TabIndex = 13
@@ -163,7 +171,7 @@ Partial Class FormMain
         '
         'ButtonOpenFile
         '
-        Me.ButtonOpenFile.Location = New System.Drawing.Point(116, 399)
+        Me.ButtonOpenFile.Location = New System.Drawing.Point(116, 416)
         Me.ButtonOpenFile.Name = "ButtonOpenFile"
         Me.ButtonOpenFile.Size = New System.Drawing.Size(97, 29)
         Me.ButtonOpenFile.TabIndex = 13
@@ -172,7 +180,7 @@ Partial Class FormMain
         '
         'ButtonRemoveListPic
         '
-        Me.ButtonRemoveListPic.Location = New System.Drawing.Point(220, 399)
+        Me.ButtonRemoveListPic.Location = New System.Drawing.Point(220, 416)
         Me.ButtonRemoveListPic.Name = "ButtonRemoveListPic"
         Me.ButtonRemoveListPic.Size = New System.Drawing.Size(97, 29)
         Me.ButtonRemoveListPic.TabIndex = 13
@@ -181,7 +189,7 @@ Partial Class FormMain
         '
         'ButtonApplyAll
         '
-        Me.ButtonApplyAll.Location = New System.Drawing.Point(336, 399)
+        Me.ButtonApplyAll.Location = New System.Drawing.Point(336, 416)
         Me.ButtonApplyAll.Name = "ButtonApplyAll"
         Me.ButtonApplyAll.Size = New System.Drawing.Size(285, 29)
         Me.ButtonApplyAll.TabIndex = 14
@@ -190,7 +198,7 @@ Partial Class FormMain
         '
         'LabelOldFileName
         '
-        Me.LabelOldFileName.Location = New System.Drawing.Point(334, 260)
+        Me.LabelOldFileName.Location = New System.Drawing.Point(334, 277)
         Me.LabelOldFileName.Name = "LabelOldFileName"
         Me.LabelOldFileName.Size = New System.Drawing.Size(287, 28)
         Me.LabelOldFileName.TabIndex = 15
@@ -198,18 +206,75 @@ Partial Class FormMain
         'ButtonSelectNewPath
         '
         Me.ButtonSelectNewPath.Font = New System.Drawing.Font("宋体", 5.0!)
-        Me.ButtonSelectNewPath.Location = New System.Drawing.Point(597, 320)
+        Me.ButtonSelectNewPath.Location = New System.Drawing.Point(597, 337)
         Me.ButtonSelectNewPath.Name = "ButtonSelectNewPath"
         Me.ButtonSelectNewPath.Size = New System.Drawing.Size(24, 21)
         Me.ButtonSelectNewPath.TabIndex = 16
         Me.ButtonSelectNewPath.Text = "..."
         Me.ButtonSelectNewPath.UseVisualStyleBackColor = True
         '
+        'MenuStripSettings
+        '
+        Me.MenuStripSettings.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreferencesToolStripMenuItem})
+        Me.MenuStripSettings.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStripSettings.Name = "MenuStripSettings"
+        Me.MenuStripSettings.Size = New System.Drawing.Size(642, 25)
+        Me.MenuStripSettings.TabIndex = 19
+        Me.MenuStripSettings.Text = "MenuStripSettings"
+        '
+        'PreferencesToolStripMenuItem
+        '
+        Me.PreferencesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SpecificStringToolStripMenuItem})
+        Me.PreferencesToolStripMenuItem.Name = "PreferencesToolStripMenuItem"
+        Me.PreferencesToolStripMenuItem.Size = New System.Drawing.Size(88, 21)
+        Me.PreferencesToolStripMenuItem.Text = "&Preferences"
+        '
+        'SpecificStringToolStripMenuItem
+        '
+        Me.SpecificStringToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DelToDeleteFileToolStripMenuItem, Me.PassToSkipToolStripMenuItem, Me.CopyButNotDeleteToolStripMenuItem})
+        Me.SpecificStringToolStripMenuItem.Name = "SpecificStringToolStripMenuItem"
+        Me.SpecificStringToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SpecificStringToolStripMenuItem.Text = "Specific String"
+        '
+        'DelToDeleteFileToolStripMenuItem
+        '
+        Me.DelToDeleteFileToolStripMenuItem.Checked = True
+        Me.DelToDeleteFileToolStripMenuItem.CheckOnClick = True
+        Me.DelToDeleteFileToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.DelToDeleteFileToolStripMenuItem.Name = "DelToDeleteFileToolStripMenuItem"
+        Me.DelToDeleteFileToolStripMenuItem.Size = New System.Drawing.Size(283, 22)
+        Me.DelToDeleteFileToolStripMenuItem.Text = """/del"" to delete file"
+        '
+        'PassToSkipToolStripMenuItem
+        '
+        Me.PassToSkipToolStripMenuItem.Checked = True
+        Me.PassToSkipToolStripMenuItem.CheckOnClick = True
+        Me.PassToSkipToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.PassToSkipToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveFromListToolStripMenuItem})
+        Me.PassToSkipToolStripMenuItem.Name = "PassToSkipToolStripMenuItem"
+        Me.PassToSkipToolStripMenuItem.Size = New System.Drawing.Size(283, 22)
+        Me.PassToSkipToolStripMenuItem.Text = """/pass"" to skip to the next one"
+        '
+        'RemoveFromListToolStripMenuItem
+        '
+        Me.RemoveFromListToolStripMenuItem.CheckOnClick = True
+        Me.RemoveFromListToolStripMenuItem.Name = "RemoveFromListToolStripMenuItem"
+        Me.RemoveFromListToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RemoveFromListToolStripMenuItem.Text = "Remove from list"
+        '
+        'CopyButNotDeleteToolStripMenuItem
+        '
+        Me.CopyButNotDeleteToolStripMenuItem.CheckOnClick = True
+        Me.CopyButNotDeleteToolStripMenuItem.Name = "CopyButNotDeleteToolStripMenuItem"
+        Me.CopyButNotDeleteToolStripMenuItem.Size = New System.Drawing.Size(283, 22)
+        Me.CopyButNotDeleteToolStripMenuItem.Text = """&&"" as Prefix to copy but not delete"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(642, 440)
+        Me.ClientSize = New System.Drawing.Size(642, 457)
+        Me.Controls.Add(Me.MenuStripSettings)
         Me.Controls.Add(Me.ButtonSelectNewPath)
         Me.Controls.Add(Me.LabelOldFileName)
         Me.Controls.Add(Me.ButtonApplyAll)
@@ -233,6 +298,8 @@ Partial Class FormMain
         Me.Name = "FormMain"
         Me.Text = "Manual-Picture-Classifying-Assistant"
         CType(Me.PictureBoxProcessing, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStripSettings.ResumeLayout(False)
+        Me.MenuStripSettings.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -259,4 +326,11 @@ Partial Class FormMain
     Friend WithEvents ButtonApplyAll As Button
     Friend WithEvents LabelOldFileName As Label
     Friend WithEvents ButtonSelectNewPath As Button
+    Friend WithEvents MenuStripSettings As MenuStrip
+    Friend WithEvents PreferencesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SpecificStringToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DelToDeleteFileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PassToSkipToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CopyButNotDeleteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RemoveFromListToolStripMenuItem As ToolStripMenuItem
 End Class

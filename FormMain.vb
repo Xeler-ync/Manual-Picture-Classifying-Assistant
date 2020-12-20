@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Public Class FormMain
     Dim FileMovement(0 To 1, 0) As String '存储文件移动信息，第一维为0时是原路径,为1时是新路径
-
+    Dim UsingEnter As Boolean
     Private Sub ButtonOpenFolder_Click(sender As Object, e As EventArgs) Handles ButtonOpenFolder.Click '打开文件夹
         Dim Path As String
         If FolderBrowserDialogForList.ShowDialog() = DialogResult.OK Then
@@ -81,34 +81,38 @@ Public Class FormMain
     End Sub
 
     Private Sub NextPic() '完成了这张图片，进入下一张
-        If TextBoxNewPath.Text(Len(TextBoxNewPath.Text) - 1) <> "\" Then '先确保路径没有缺失反斜杠
-            TextBoxNewPath.Text += "\"
+        If Not (PassToSkipToolStripMenuItem.Checked = True And TextBoxNewFileName.Text.Replace(" ", "") = "/pass") Then '如果用户不是要跳过
+            If TextBoxNewPath.Text(Len(TextBoxNewPath.Text) - 1) <> "\" Then '先确保路径没有缺失反斜杠
+                TextBoxNewPath.Text += "\"
+            End If
+            Dim NewListUBound As UInt16 = UBound(FileMovement, 2) + 1 '计算新上标
+            ReDim Preserve FileMovement(0 To 1, 0 To NewListUBound) '扩展数组
+            Dim NewPath As String '新路径
+            FileMovement(0, NewListUBound) = ListBoxFileName.SelectedItem '存储原路径
+            NewPath = TextBoxNewPath.Text '文件夹
+            If CheckBoxFileNamePrefix.Checked = True Then '前缀
+                NewPath += TextBoxFileNamePrefix.Text
+            End If
+            If TextBoxNewFileName.Text <> "" Then
+                NewPath += TextBoxNewFileName.Text '文件名
+            Else
+                NewPath += System.IO.Path.GetFileNameWithoutExtension(ListBoxFileName.SelectedItem)
+            End If
+            If CheckBoxFileNameSuffix.Checked = True Then '后缀
+                NewPath += TextBoxFileNameSuffix.Text
+            End If
+            NewPath += System.IO.Path.GetExtension(ListBoxFileName.SelectedItem)
+            FileMovement(1, NewListUBound) = NewPath '存储新路径
         End If
-        Dim NewListUBound As UInt16 = UBound(FileMovement, 2) + 1 '计算新上标
-        ReDim Preserve FileMovement(0 To 1, 0 To NewListUBound) '扩展数组
-        Dim NewPath As String '新路径
-        FileMovement(0, NewListUBound) = ListBoxFileName.SelectedItem '存储原路径
-        NewPath = TextBoxNewPath.Text '文件夹
-        If CheckBoxFileNamePrefix.Checked = True Then '前缀
-            NewPath += TextBoxFileNamePrefix.Text
-        End If
-        If TextBoxNewFileName.Text <> "" Then
-            NewPath += TextBoxNewFileName.Text '文件名
-        Else
-            NewPath += System.IO.Path.GetFileNameWithoutExtension(ListBoxFileName.SelectedItem)
-        End If
-        If CheckBoxFileNameSuffix.Checked = True Then '后缀
-            NewPath += TextBoxFileNameSuffix.Text
-        End If
-        NewPath += System.IO.Path.GetExtension(ListBoxFileName.SelectedItem)
-        FileMovement(1, NewListUBound) = NewPath '存储新路径
         Dim PicListSelectedIndex As UInt16
         PicListSelectedIndex = ListBoxFileName.SelectedIndex
         Try
             ListBoxFileName.SelectedIndex = PicListSelectedIndex + 1
         Catch
         End Try
-        ListBoxFileName.Items.RemoveAt(PicListSelectedIndex)
+        If Not (PassToSkipToolStripMenuItem.Checked = True And RemoveFromListToolStripMenuItem.Checked = True And TextBoxNewFileName.Text.Replace(" ", "") = "/pass") Then '如果用户不是要(跳过且不从列表中删除该项)
+            ListBoxFileName.Items.RemoveAt(PicListSelectedIndex)
+        End If
         TextBoxNewFileName.Text = ""
         ButtonNextUseable()
     End Sub
@@ -159,10 +163,16 @@ Public Class FormMain
     End Sub
 
     Private Sub FormMain_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If TextBoxNewPath.Text <> "" And Not (CheckBoxFileNamePrefix.CheckState = CheckState.Checked And TextBoxFileNamePrefix.Text = "") And Not (CheckBoxFileNameSuffix.CheckState = CheckState.Checked And TextBoxFileNameSuffix.Text = "") And ListBoxFileName.SelectedItem <> "" Then
-            If e.KeyCode = 13 Then
-                NextPic()
-            End If
+        If TextBoxNewPath.Text <> "" And Not (CheckBoxFileNamePrefix.CheckState = CheckState.Checked And TextBoxFileNamePrefix.Text = "") And Not (CheckBoxFileNameSuffix.CheckState = CheckState.Checked And TextBoxFileNameSuffix.Text = "") And ListBoxFileName.SelectedItem <> "" AndAlso e.KeyCode = 13 Then
+            UsingEnter = True '给KeyPress用
+            NextPic()
+        End If
+    End Sub
+
+    Private Sub FormMain_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        If UsingEnter = True Then
+            e.Handled = True '使回车不吵
+            UsingEnter = False
         End If
     End Sub
 End Class
